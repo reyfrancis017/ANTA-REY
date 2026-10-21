@@ -21,22 +21,23 @@
       flex-direction: column;
     }
 
-    .navbar { 
-      background-color: #2c2a2a;
+    /* Top Navigation */
+    .navbar {   
+      background-color: #111111;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 32px;
       height: 64px;
-      position: relative;
+      position: relative; /* Para sa gitunga nga links */
     }
 
     .navbar-logo {
-      height: 45px;
+      height: 28px;
       width: auto;
-      border-radius: 8px;
     }
 
+    /* Gipatunga ang menu links */
     .navbar-links {
       position: absolute;
       left: 50%;
@@ -47,25 +48,24 @@
     }
 
     .navbar-links a {
-      color: #ffffff;
+      color: #d1d1d1;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 6px;
-    }
-
-    .navbar-links a:hover {
-      background-color: #444;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .logout-btn {
-      color: #ffffff;
-      font-weight: 600;
+      color: #e21b23 !important;
+      font-weight: 700 !important;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
+    /* Main Section */
     .main-container {
       flex: 1;
       max-width: 880px;
@@ -73,7 +73,7 @@
       margin: 40px auto;
       background-color: #fcfbf9;
       padding: 36px 40px;
-      border-radius: 8px;
+      border-radius: 4px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
@@ -101,13 +101,14 @@
       align-items: stretch;
     }
 
+    /* Left Sidebar Card */
     .sites-sidebar {
       flex: 1.1;
       padding: 28px 24px;
       background-color: #ffffff;
       border: 1px solid #e5e5e5;
-      border-left: 4px solid #d40000;
-      border-radius: 8px;
+      border-left: 4px solid #e21b23;
+      border-radius: 2px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -128,6 +129,7 @@
       line-height: 1.6;
     }
 
+    /* Right Link List */
     .sites-container {
       flex: 1;
       display: flex;
@@ -140,7 +142,7 @@
       background-color: #ffffff;
       padding: 14px 18px;
       border: 1px solid #e5e5e5;
-      border-radius: 8px;
+      border-radius: 2px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -158,20 +160,17 @@
       gap: 8px;
     }
 
+    /* Buttons */
     .action-btn {
       padding: 8px 14px;
-      background-color: #d40000;
+      background-color: #111111;
       color: #ffffff;
-      border: 1px solid #d40000;
-      border-radius: 6px;
+      border: 1px solid #111111;
+      border-radius: 2px;
       cursor: pointer;
       font-size: 12px;
       font-weight: 600;
       outline: none;
-    }
-
-    .action-btn:hover {
-      background-color: #a00000;
     }
 
     .action-btn-outline {
@@ -180,16 +179,14 @@
       border: 1px solid #cccccc;
     }
 
-    .action-btn-outline:hover {
-      background-color: #f0f0f0;
-    }
-
+    /* Footer */
     .footer {
       text-align: center;
-      padding: 20px;
-      background-color: #222222;
-      color: #ffffff;
-      font-size: 13px;
+      padding: 14px;
+      background-color: #111111;
+      color: #888888;
+      font-size: 12px;
+      letter-spacing: 0.3px;
     }
 
     @media (max-width: 768px) {
@@ -197,9 +194,11 @@
         position: static;
         transform: none;
       }
+
       .content-wrapper {
         flex-direction: column;
       }
+      
       .main-container {
         padding: 20px;
         margin: 20px auto;
@@ -209,22 +208,26 @@
 </head>
 <body>
 
+
   <div class="navbar">
     <img src="logo1.webp" alt="ANTA Logo" class="navbar-logo">
     <div class="navbar-links">
-      <a href="index.html">Hompage</a>
-      <a href="ABOUT.HTML">About</a>
+      <a href="homepage.html">Home</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
     <a href="login.html" class="logout-btn">Log Out</a>
   </div>
 
+  
   <div class="main-container">
     <div class="page-title-wrap">
       <h1>About Us</h1>
     </div>
 
     <div class="content-wrapper">
+      
+      
       <div class="sites-sidebar" id="sidebar-card" onclick="goToCurrentSite()">
         <h2 id="site-title">Social Media</h2>
         <p id="site-description">
@@ -232,7 +235,9 @@
         </p>
       </div>
 
+   
       <div class="sites-container">
+        
         <div class="site-box">
           <a href="javascript:void(0)" class="site-link" onclick="updateSiteContent('facebook')">Facebook</a>
           <div class="btn-group">
@@ -256,12 +261,15 @@
             <button class="action-btn" onclick="openSite('twitter')">Visit Link</button>
           </div>
         </div>
+
       </div>
+
     </div>
   </div>
 
+  
   <div class="footer">
-    2026 ANTA Sports. All rights reserved.
+    &copy; 2026 ANTA Shop. All rights reserved.
   </div>
 
   <script>
@@ -270,7 +278,7 @@
         title: "Facebook",
         description: "Our Facebook page is a great way to stay connected with the community. You can join discussions, see new product announcements, and catch up on the latest news.",
         url: "https://www.facebook.com/"
-      },
+      },  
       instagram: {
         title: "Instagram",
         description: "Follow us on Instagram for daily photo updates, behind-the-scenes content, and style inspiration. It's the best way to see our products in action.",
@@ -283,7 +291,7 @@
       }
     };
 
-    let currentSiteUrl = "https://www.facebook.com/";
+    let currentSiteUrl = null;
 
     function updateSiteContent(site) {
       const titleElement = document.getElementById("site-title");
@@ -304,10 +312,4 @@
 
     function goToCurrentSite() {
       if (currentSiteUrl) {
-        window.open(currentSiteUrl, "_blank");
-      }
-    }
-  </script>
-
-</body>
-</html>
+        window.open(currentSite
