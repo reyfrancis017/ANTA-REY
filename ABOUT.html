@@ -15,8 +15,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: #f4f3f0 url('BG.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #1a1a1a;
@@ -24,7 +23,6 @@
       flex-direction: column;
     }
 
-    /* NAVBAR - SAME STYLE AS CONTACT */
     .navbar {
       background-color: #222;
       padding: 10px 20px;
@@ -32,7 +30,7 @@
       justify-content: space-between;
       align-items: center;
       min-height: 60px;
-      gap: 10px;
+      gap: 12px;
     }
 
     .navbar-logo {
@@ -46,15 +44,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      gap: 20px;
     }
 
     .navbar-links a {
       color: white;
       text-decoration: none;
-      margin: 0 10px;
       font-weight: bold;
       font-size: 14px;
+      white-space: nowrap;
     }
 
     .navbar-links a:hover {
@@ -77,7 +75,6 @@
       background-color: #a00000;
     }
 
-    /* MAIN CONTENT */
     .main-container {
       flex: 1;
       max-width: 880px;
@@ -200,7 +197,6 @@
       background-color: #f0f0f0;
     }
 
-    /* FOOTER */
     .footer {
       text-align: center;
       padding: 20px;
@@ -209,35 +205,28 @@
       font-size: 13px;
     }
 
-    /* MOBILE RESPONSIVE */
     @media (max-width: 768px) {
       .navbar {
-        height: auto;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 10px;
-        gap: 12px;
+        padding: 10px 8px;
+        gap: 8px;
       }
 
       .navbar-logo {
-        height: 35px;
+        height: 28px;
       }
 
       .navbar-links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 16px;
+        flex: 1;
+        gap: 10px;
       }
 
       .navbar-links a {
-        margin: 0;
-        padding: 6px 0;
-        font-size: 14px;
+        font-size: 12px;
       }
 
       .logout-btn {
-        font-size: 13px;
+        padding: 6px 8px;
+        font-size: 11px;
       }
 
       .main-container {
@@ -273,13 +262,27 @@
       }
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 380px) {
+      .navbar {
+        padding: 10px 5px;
+        gap: 5px;
+      }
+
+      .navbar-logo {
+        height: 24px;
+      }
+
       .navbar-links {
-        gap: 12px;
+        gap: 6px;
       }
 
       .navbar-links a {
-        font-size: 13px;
+        font-size: 10px;
+      }
+
+      .logout-btn {
+        padding: 5px 6px;
+        font-size: 10px;
       }
 
       .main-container {
@@ -296,7 +299,6 @@
 
 <body>
 
-  <!-- NAVBAR -->
   <div class="navbar">
     <img src="/logo1.webp" alt="ANTA Logo" class="navbar-logo">
 
@@ -309,7 +311,6 @@
     <a href="/LOGIN.html" class="logout-btn">Log Out</a>
   </div>
 
-  <!-- MAIN CONTENT -->
   <div class="main-container">
 
     <div class="page-title-wrap">
@@ -396,12 +397,10 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     2026 ANTA Sports. All rights reserved.
   </div>
 
-  <!-- JAVASCRIPT -->
   <script>
     const siteContent = {
       facebook: {
@@ -423,21 +422,22 @@
       }
     };
 
-    let currentSiteUrl = "https://www.facebook.com/";
+    let currentSiteUrl = siteContent.facebook.url;
 
     function updateSiteContent(site) {
-      const titleElement = document.getElementById("site-title");
-      const descriptionElement = document.getElementById("site-description");
-
       if (siteContent[site]) {
-        titleElement.textContent = siteContent[site].title;
-        descriptionElement.textContent = siteContent[site].description;
+        document.getElementById("site-title").textContent =
+          siteContent[site].title;
+
+        document.getElementById("site-description").textContent =
+          siteContent[site].description;
+
         currentSiteUrl = siteContent[site].url;
       }
     }
 
     function openSite(site) {
-      if (siteContent[site] && siteContent[site].url) {
+      if (siteContent[site]) {
         window.open(siteContent[site].url, "_blank", "noopener");
       }
     }
