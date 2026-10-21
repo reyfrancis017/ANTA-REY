@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANTA Sport Shop - Contact Us</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden; /* Dili gyud mo-scroll */
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #222;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .navbar-logo {
+      height: 35px;
+    }
+
+    .navbar-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      background-color: #d40000;
+      color: white;
+      padding: 6px 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .container {
+      flex: 1;
+      max-width: 800px;
+      width: 90%;
+      margin: 20px auto;
+      background: white;
+      padding: 20px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      margin: 0 0 5px 0;
+      color: #222;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    p.sub {
+      text-align: center;
+      color: #666;
+      margin: 0 0 15px 0;
+      font-size: 14px;
+    }
+
+    .contact-box {
+      display: flex;
+      gap: 20px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info-item {
+      margin-bottom: 15px;
+    }
+
+    .info-item h3 {
+      margin: 0 0 3px 0;
+      color: #d40000;
+      font-size: 15px;
+    }
+
+    .info-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .form {
+      flex: 1;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 13px;
+    }
+
+    .form-group textarea {
+      height: 60px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d40000;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #222;
+      color: white;
+      font-size: 12px;
+      height: 35px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="logo1.webp" alt="ANTA Logo" class="navbar-logo">
+    <div class="navbar-links">
+      <a href="index.html">Home</a>
+      <a href="ABOUT.HTML">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="login.html" class="logout-btn">Log Out</a>
+  </div>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="sub">Naa kay pangutana? I-message lang kami diri.</p>
+
+    <div class="contact-box">
+      <!-- Details -->
+      <div class="info">
+        <div class="info-item">
+          <h3>📍 Address</h3>
+          <p>ANTA Sports Store, Purok 2, Romarate, Aurora ZDS</p>
+        </div>
+        <div class="info-item">
+          <h3>📞 Phone</h3>
+          <p>+63 912 345 6789</p>
+        </div>
+        <div class="info-item">
+          <h3>✉️ Email</h3>
+          <p>support@antasports.ph</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form class="form" onsubmit="sendMessage(event)">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Pangalan" required>
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Isulat imong mensahe diri..." required></textarea>
+        </div>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 ANTA Sports. All rights reserved.
+  </div>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      alert('Salamat! Nasend na imong message.');
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>

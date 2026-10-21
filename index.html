@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANTA SPORT SHOP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-size: cover; 
+      color: #522727;
+    }
+
+    .navbar {
+      background-color: #2c2a2a;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 20px;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 45px;
+      width: auto;
+      margin-right: 20px;
+      border-radius: 8px;
+    }
+
+    .navbar-links {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 24px;
+      margin: 0 10px;
+      border-radius: 8px;
+    }
+
+    .cart-btn-nav {
+      background-color: #d40000;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      margin-right: 15px;
+    }
+
+    .cart-btn-nav:hover {
+      background-color: #a00000;
+    }
+
+    .cart-badge {
+      background-color: #ffffff;
+      color: #d40000;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Hero Wrapper */
+    .hero-container {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    /* Gi-adjust nga Hero Box - maigo ra sa words */
+    .hero {
+      display: inline-block;
+      background-color: #777777;
+      color: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .featured-products {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 40px 15px;
+      gap: 20px;
+    }
+
+    .product-card {
+      width: 28%;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(251, 246, 250, 0.9);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-card h2 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #090909;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #d40000;
+      margin-top: 10px;
+    }
+
+    .buy-button {
+      padding: 10px 22px;
+      background-color: #d40000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .buy-button:hover {
+      background-color: #a00000; 
+    }
+
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100%;
+      background-color: #ffffff;
+      box-shadow: -4px 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cart-header {
+      background-color: #2c2a2a;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .cart-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .cart-footer {
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-top: 1px solid #ddd;
+    }
+
+    .cart-total {
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #d40000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background-color: #a00000;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="logo1.webp" alt="ANTA Logo" class="navbar-logo">
+    <div class="navbar-links">
+      <a href="HOMEPAGE.HTML">Home</a>
+      <a href="ABOUT.HTML">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="cart-btn-nav" onclick="toggleCart()">
+      🛒 Cart <span class="cart-badge" id="cart-count">0</span>
+    </button>
+    <a href="login.html" class="logout-btn">Log Out</a>
+  </div>
+
+  <div class="hero-container">
+    <div class="hero">
+      <h1>ANTA Sports</h1>
+      <p>Performance. Innovation. Style. Step into greatness with ANTA.</p>
+    </div>
+  </div>
+
+  <div class="featured-products">
+
+    <div class="product-card">
+      <img src="6.0 (1).webp" alt="ANTA Shock Wave 6.0">
+      <h2>ANTA Shock The Game 6.0</h2>
+      <p>High-performance basketball shoes with superior grip and comfort.</p>
+      <p class="product-price">₱15,499.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Shock The Game 6.0', 15499)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="anta5 (1).jfif" alt="ANTA Wind Tunnel 5">
+      <h2>ANTA Wind Tunnel 5</h2>
+      <p>Signature series by Klay Thompson – built for speed and stability.</p>
+      <p class="product-price">₱20,899.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Wind Tunnel 5', 20899)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="anta7.webp" alt="ANTA Shock Wave 7">
+      <h2>ANTA Shock Wave 7</h2>
+      <p>Lightweight design engineered for maximum running efficiency.</p>
+      <p class="product-price">₱18,999.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Shock Wave 7', 18999)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="kt8.webp" alt="ANTA KT8 Basketball Shoes">
+      <h2>ANTA KT8 'Gold Blooded'</h2>
+      <p>Klay Thompson signature shoe designed for pro performance.</p>
+      <p class="product-price">₱19,500.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA KT8 Gold Blooded', 19500)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="gh3.webp" alt="ANTA GH3">
+      <h2>ANTA Gordon Hayward 3</h2>
+      <p>Responsive cushioning with maximum lateral lockdown support.</p>
+      <p class="product-price">₱16,200.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Gordon Hayward 3', 16200)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="gtc202.webp" alt="ANTA C202 GT">
+      <h2>ANTA C202 GT Running Shoes</h2>
+      <p>Carbon plate marathon shoes for ultra energy return and speed.</p>
+      <p class="product-price">₱22,500.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA C202 GT Running Shoes', 22500)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="kai1.webp" alt="ANTA KAI 1">
+      <h2>ANTA KAI 1 'Artist On Court'</h2>
+      <p>Kyrie Irving's official signature sneaker with revolutionary traction.</p>
+      <p class="product-price">₱21,000.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA KAI 1 Artist On Court', 21000)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="hood.webp" alt="ANTA Training Hoodie">
+      <h2>ANTA Performance Hoodie</h2>
+      <p>Breathable, moisture-wicking fleece fabric built for warm-ups.</p>
+      <p class="product-price">₱4,800.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Performance Hoodie', 4800)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="shorts.webp" alt="ANTA Pro Basketball Shorts">
+      <h2>ANTA Pro Basketball Shorts</h2>
+      <p>Lightweight basketball shorts with quick-dry technology.</p>
+      <p class="product-price">₱2,500.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Pro Basketball Shorts', 2500)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="bag.webp" alt="ANTA Sports Backpack">
+      <h2>ANTA Pro Athlete Backpack</h2>
+      <p>Durable multi-compartment backpack with dedicated shoe pocket.</p>
+      <p class="product-price">₱3,900.00</p>
+      <button class="buy-button" onclick="addToCart('ANTA Pro Athlete Backpack', 3900)">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cartItems">
+      <p>Walang laman ang iyong cart.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₱0.00</span>
+      </div>
+      <button class="checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    2026 ANTA Sports. All rights reserved.
+  </div>
+
+  <script>
+    let cart = [];
+
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function addToCart(name, price) {
+      const itemIndex = cart.findIndex(item => item.name === name);
+      if (itemIndex > -1) {
+        cart[itemIndex].qty += 1;
+      } else {
+        cart.push({ name: name, price: price, qty: 1 });
+      }
+      updateCartUI();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartCount = document.getElementById('cart-count');
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+
+      let totalQty = 0;
+      let totalPrice = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p>Walang laman ang iyong cart.</p>';
+      } else {
+        cartItems.innerHTML = '';
+        cart.forEach((item, index) => {
+          totalQty += item.qty;
+          totalPrice += item.price * item.qty;
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'cart-item';
+          itemDiv.innerHTML = `
+            <div>
+              <strong>${item.name}</strong><br>
+              <small>₱${item.price.toLocaleString()} x ${item.qty}</small>
+            </div>
+            <button onclick="removeFromCart(${index})" style="background:none; border:none; color:red; cursor:pointer;">✖</button>
+          `;
+          cartItems.appendChild(itemDiv);
+        });
+      }
+
+      cartCount.textContent = totalQty;
+      cartTotal.textContent = '₱' + totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    }
+  </script>
+
+</body>
+</html>
